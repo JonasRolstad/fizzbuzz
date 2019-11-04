@@ -1,0 +1,28 @@
+﻿@model IEnumerable<TemperatureData>
+@{
+    ViewData["Title"] = "Badetemperaturer";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Badetemperaturer i Stavanger</h1>
+    <p>Temperaturene blir oppdatert hver time (krever refresh)</p>
+    <br/>
+    <br/>
+    @{
+        var first = true;
+    }
+    @foreach(var temp in Model){
+        
+            @if(first)
+            {
+             @:<div style="border:10px; border-style:solid; width:230px; height:100px; margin-bottom:7px; margin-left: 40%;background: #ffedbf;border-radius: 90%;border-color: #ff7251;padding-top: 8px;font-weight: bold;">
+                 first = false;
+            }
+            else { 
+              @:<div style="border:2px; border-style:dotted; width:230px; height:80px; margin-bottom:7px; margin-left: 40%;border-radius: 90%;background: #ebfcfe; border-color: #d9e1fc;">
+            }
+            <p>@temp.LocationName</p>
+            <p>@temp.Temperature</p>
+        @:</div>
+    }
+</div>
